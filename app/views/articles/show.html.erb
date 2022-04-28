@@ -1,0 +1,29 @@
+<style type="">
+  h1 { text-align: center; }
+  p { text-align: center; }
+  h6 { text-align: center; }
+  h4 { text-align: center; }
+</style>
+<h1><%= @article.title %></h1>
+
+<p><%= @article.body %></p>
+
+<% if @article.image.attached? %>
+  <div style="width: 400px; height: auto">
+    <strong>Image:</strong>
+    <%= image_tag(@article.image, style:'width: 100%') %>
+  </div>
+<% end %>
+
+<h6>
+  <% if current_user.id == @article.user_id %>
+      <%= button_to "Edit", edit_article_path(@article), :method => :get %>
+      <%= button_to "Delete", article_path(@article), :method => :delete %>
+  <% end %>
+</h6>
+
+<h4>Comments</h4>
+<%= render @article.comments %>
+
+<h4>Add a comment:</h4>
+<%= render 'comments/form' %>

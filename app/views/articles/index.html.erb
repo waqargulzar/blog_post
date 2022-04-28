@@ -1,0 +1,18 @@
+<style type="text/css">
+  h2 { text-align: center; }
+  h5 { text-align: center; }
+</style>
+
+
+<ol>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %> | Created By:  <%= article.user.email.split('@').first %> 
+    </li>
+  <% end %>
+</ol>
+<h5>
+<% if user_signed_in? %>
+<%= link_to "New Article", new_article_path %>
+<% end %>
+<h5>

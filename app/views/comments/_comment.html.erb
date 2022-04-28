@@ -1,0 +1,17 @@
+<style>
+  p { text-align: center; }
+  h6 { text-align: center; }
+</style>
+<p>
+  <strong>Comment:</strong>
+  <%= comment.content %>
+</p>
+<h6>
+  <% if comment.user_id == current_user.id || @article.user_id == current_user.id %>
+  <%= button_to 'Destroy Comment', [comment.article, comment],
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+  <% end %>
+</h6>
+  
+
