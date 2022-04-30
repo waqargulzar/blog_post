@@ -1,9 +1,9 @@
-<style type="text/css">
+<style>
   h2 { text-align: center; }
   h5 { text-align: center; }
+  li { margin-top: 10px; }
 </style>
-
-
+<body>
 <ol>
   <% @articles.each do |article| %>
     <li>
@@ -11,8 +11,10 @@
     </li>
   <% end %>
 </ol>
+
 <h5>
 <% if user_signed_in? %>
 <%= link_to "New Article", new_article_path %>
 <% end %>
 <h5>
+</body>

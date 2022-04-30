@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
-  def show;end
+  def show; end
 
   def new
     @article = current_user.articles.new
@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
   def edit
     authorize @article
   end
+
   def create
     @article = current_user.articles.create(article_params)
     if @article.save
@@ -40,11 +41,12 @@ class ArticlesController < ApplicationController
   end
 
   private
-    def set_article
-      @article = Article.find(params[:id])
-    end
 
-    def article_params
-      params.require(:article).permit(:title, :user_id, :body, :image)
-    end
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  def article_params
+    params.require(:article).permit(:title, :user_id, :body, :image)
+  end
 end

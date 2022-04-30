@@ -1,6 +1,7 @@
 <style>
   div { text-align: center; }
 </style>
+
 <%= form_with model: article do |form| %>
   <div>
     <%= form.label :title %><br>
@@ -8,20 +9,22 @@
     <% article.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+</div>
 
-  <div>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-  <div>
+<div>
     <%= form.label :body %><br>
     <%= form.text_area :body %><br>
     <% article.errors.full_messages_for(:body).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
-  <div>
+</div>
+
+<div style="margin-top: 40px;">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+</div>
+
+<div style="margin-top: 100px;",>
     <%= form.submit %>
-  </div>
+</div>
 <% end %>

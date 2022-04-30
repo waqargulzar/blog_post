@@ -1,19 +1,30 @@
-<style type="">
-  h1 { text-align: center; }
-  p { text-align: center; }
-  h6 { text-align: center; }
-  h4 { text-align: center; }
+<style>
+  .card { text-align: center; }
+  p { margin-top: 20px; }
 </style>
-<h1><%= @article.title %></h1>
 
-<p><%= @article.body %></p>
+<body>
 
-<% if @article.image.attached? %>
-  <div style="width: 400px; height: auto">
-    <strong>Image:</strong>
-    <%= image_tag(@article.image, style:'width: 100%') %>
+<div class="card" style="width:400px; background-image:'download.jpeg'; margin-left: 30px;">
+
+  <p>
+  <% if @article.image.attached? %>
+  <%= image_tag(@article.image) %>
+  <% end %>
+  </p>
+
+  <div class="card-header">
+    <h2><%= @article.title %></h2>
   </div>
-<% end %>
+
+  <div class="card-body">
+    <p><%= @article.body %></p>
+  </div>
+
+</div>
+
+
+<div style="margin-top: 50px; padding-top: 10px; margin-left: 50px; color: midnightblue;">
 
 <h6>
   <% if current_user.id == @article.user_id %>
@@ -27,3 +38,7 @@
 
 <h4>Add a comment:</h4>
 <%= render 'comments/form' %>
+
+</div>
+
+</body>
